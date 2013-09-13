@@ -16,9 +16,14 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
+      "python" => {
+        "version" => "3.3.2",
+        "install_method" => "source"
+      }
     }
 
     chef.run_list = [
+        "apt",
         "recipe[django_up::default]"
     ]
   end
