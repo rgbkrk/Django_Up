@@ -27,7 +27,7 @@ Chef::Log.info("INFO: #{node['python']['binary']}")
 
 link node['python']['binary'] do
   to install_path
-  not_if { ::File.exists?(install_path) }
+  not_if { ::File.exists?(node['python']['binary']) }
 end
 
 include_recipe "python::pip"
